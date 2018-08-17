@@ -1,0 +1,16 @@
+{
+  "name": "easyclass",
+  "version": "1.0.0",
+  "description": "Easy Class",
+  "scripts": {
+    "heroku-postbuild": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
+    "local": "concurrently \"npm run start-dev --prefix server\" \"npm run start-dev --prefix client\"",
+    "start": "npm start --prefix server"
+  },
+  "author": "Rafael Companhoni",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.1"
+  },
+  "dependencies": {}
+}
