@@ -7,7 +7,7 @@ export const signupValidation = [
     .exists()
     .withMessage('O nome deve ser informado')
 
-    .isLength({ min: 2 })
+    .isLength({ min: 3 })
     .withMessage('O nome deve possuir pelo menos dois caracteres'),
 
   check('email')
