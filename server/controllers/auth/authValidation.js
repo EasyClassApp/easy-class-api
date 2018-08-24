@@ -5,7 +5,7 @@ import User from '../../models/User';
 export const signupValidation = [
   check('name')
     .exists()
-    .withMessage('O nome deve ser informado')
+    .withMessage('O nome deve ser informado!')
 
     .isLength({ min: 3 })
     .withMessage('O nome deve possuir pelo menos dois caracteres'),
