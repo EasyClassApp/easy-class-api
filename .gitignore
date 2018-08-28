@@ -6,6 +6,7 @@
 *.pid
 *.gz
 *.swp
+.idea
 
 lib-cov
 node_modules
