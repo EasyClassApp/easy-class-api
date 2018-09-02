@@ -20,7 +20,7 @@ const authorize = passport.authenticate('jwt', { session: false });
 const router = express.Router();
 
 router.post('/signup', authValidation.signupValidation, authController.signup);
-router.post('/signin', authController.signin);
+router.post('/signin', authValidation.signinValidation, authController.signin);
 
 router.get('/user', userController.getUsers);
 router.get('/user/:userId', userController.getUserById);

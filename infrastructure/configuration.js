@@ -4,7 +4,6 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import morgan from 'morgan';
-import 'dotenv/config';
 import './database';
 import './passport';
 
