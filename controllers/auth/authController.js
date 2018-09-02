@@ -38,7 +38,14 @@ export async function signup(req, res) {
 
 // authenticates with LocalStrategy and returns user + JWT
 export async function signin(req, res, next) {
-  passport.authenticate('local', (err, user, info) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res
+      .status(httpStatus.UNPROCESSABLE_ENTITY)
+      .json({ errors: errors.mapped() });
+  }
+
+  return passport.authenticate('local', (err, user, info) => {
     if (err) {
       return res
         .status(httpStatus.INTERNAL_SERVER_ERROR)
