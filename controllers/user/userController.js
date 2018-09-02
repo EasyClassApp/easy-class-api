@@ -8,8 +8,7 @@ export async function getUsers(req, res) {
     return res.send(users);
   } catch (error) {
     return res
-      .status(httpStatus.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Ocorreu um erro ao buscar a lista de usuários' });
+      .status(httpStatus.INTERNAL_SERVER_ERROR);
   }
 }
 
@@ -18,15 +17,13 @@ export async function getUserById(req, res) {
     const user = await User.findById(req.params.userId);
     if (!user) {
       return res
-        .status(httpStatus.BAD_REQUEST)
-        .json({ error: 'O usuário informado não existe' });
+        .status(httpStatus.BAD_REQUEST);
     }
 
     return res.json(user);
   } catch (error) {
     return res
-      .status(httpStatus.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Ocorreu um erro ao buscar o usuário' });
+      .status(httpStatus.INTERNAL_SERVER_ERROR);
   }
 }
 
@@ -35,8 +32,7 @@ export async function updateUser(req, res) {
     const user = await User.findById(req.params.userId);
     if (!user) {
       return res
-        .status(httpStatus.BAD_REQUEST)
-        .json({ error: 'O usuário informado não existe' });
+        .status(httpStatus.BAD_REQUEST);
     }
 
     user.set(req.body);
@@ -45,8 +41,7 @@ export async function updateUser(req, res) {
     return res.json(user);
   } catch (error) {
     return res
-      .status(httpStatus.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Ocorreu um erro ao atualizar o usuário' });
+      .status(httpStatus.INTERNAL_SERVER_ERROR);
   }
 }
 
@@ -55,15 +50,13 @@ export async function deleteUser(req, res) {
     const removedUser = await User.findByIdAndRemove(req.params.userId);
     if (!removedUser) {
       return res
-        .status(httpStatus.BAD_REQUEST)
-        .json({ error: 'O usuário informado não existe' });
+        .status(httpStatus.BAD_REQUEST);
     }
 
     const users = await User.find();
     return res.send(users);
   } catch (error) {
     return res
-      .status(httpStatus.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Ocorreu um erro ao excluir o usuário' });
+      .status(httpStatus.INTERNAL_SERVER_ERROR);
   }
 }

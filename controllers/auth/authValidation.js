@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { check} from 'express-validator/check';
+import { check } from 'express-validator/check';
 import User from '../../models/User';
 
 export const signupValidation = [
