@@ -31,24 +31,29 @@ export async function signup(req, res) {
     return res.json({ newUser, token });
   } catch (error) {
     return res
-      .status(httpStatus.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Ocorreu um erro ao criar o usuário' });
+      .status(httpStatus.INTERNAL_SERVER_ERROR);
   }
 }
 
 // authenticates with LocalStrategy and returns user + JWT
 export async function signin(req, res, next) {
-  passport.authenticate('local', (err, user, info) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res
+      .status(httpStatus.UNPROCESSABLE_ENTITY)
+      .json({ errors: errors.mapped() });
+  }
+
+  return passport.authenticate('local', (err, user, info) => {
     if (err) {
       return res
-        .status(httpStatus.INTERNAL_SERVER_ERROR)
-        .json({ error: 'Ocorreu um erro ao fazer o login' });
+        .status(httpStatus.INTERNAL_SERVER_ERROR);
     }
 
     if (!user) {
       return res
         .status(httpStatus.UNAUTHORIZED)
-        .json({ message: info.message });
+        .json(info);
     }
 
     return res.json({
