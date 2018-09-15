@@ -1,15 +1,14 @@
 import mongoose from 'mongoose';
-
-import Aluno from './Aluno';
-import Professor from './Professor';
-import Aula from './Aula';
+import { professorSchema } from './Professor';
+import { alunoSchema } from './Aluno';
+import { aulaSchema } from './Aula';
 
 const avaliacaoAlunoSchema = new mongoose.Schema({
-  aluno: { type: Aluno, required: true },
-  professor: { type: Professor, required: true },
+  aluno: { type: [alunoSchema], required: true },
+  professor: { type: [professorSchema], required: true },
   nota: { type: Number, required: true },
   comentario: { type: String, required: true },
-  aula: { type: Aula, required: true },
+  aula: { type: [aulaSchema], required: true },
 });
 
 const AvaliacaoAluno = mongoose.model('AvaliacaoAluno', avaliacaoAlunoSchema);

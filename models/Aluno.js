@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt-nodejs';
-import AvaliacaoAluno from './AvaliacaoAluno';
-import Materia from './Materia';
-import Aula from './Aula';
+import { materiaSchema } from './Materia';
+import { avaliacaoAlunoSchema } from './AvaliacaoAluno';
+import { aulaSchema } from './Aula';
 
 const alunoSchema = new mongoose.Schema({
   nome: { type: String, required: true },
@@ -13,9 +13,9 @@ const alunoSchema = new mongoose.Schema({
   numeroDependentes: { type: Number, required: true },
   notaMedia: { type: Number, required: false },
   dataNascimento: { type: Date, required: true },
-  avaliacoes: { type: [AvaliacaoAluno], required: false },
-  materiasDificuldade: { type: [Materia], required: false },
-  aulas: { type: [Aula], required: false },
+  avaliacoes: { type: [avaliacaoAlunoSchema], required: false },
+  materiasDificuldade: { type: [materiaSchema], required: false },
+  aulas: { type: [aulaSchema], required: false },
 });
 
 // password hash middleware
@@ -43,7 +43,7 @@ alunoSchema.pre('save', function save(next) {
 });
 
 // validates user's password.
-aluno.methods.comparePassword = function comparePassword(candidatePassword) {
+alunoSchema.methods.comparePassword = function comparePassword(candidatePassword) {
   const { password } = this;
 
   return new Promise((resolve, reject) => {

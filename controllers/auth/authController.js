@@ -2,6 +2,7 @@ import httpStatus from 'http-status';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
 import { validationResult } from 'express-validator/check';
+import Professor from '../../models/Professor';
 import User from '../../models/User';
 
 const generateJWT = (user) => {
@@ -9,7 +10,7 @@ const generateJWT = (user) => {
   return jwt.sign({ sub: user.id, iat: timestamp }, process.env.JWT_SECRET);
 };
 
-// creates a new user and returns user + JWT
+
 export async function signup(req, res) {
   try {
     const errors = validationResult(req);
@@ -32,6 +33,39 @@ export async function signup(req, res) {
   } catch (error) {
     return res
       .status(httpStatus.INTERNAL_SERVER_ERROR);
+  }
+}
+
+// creates a new user and returns user + JWT
+export async function signupProfessor(req, res) {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res
+        .status(httpStatus.UNPROCESSABLE_ENTITY)
+        .json({ errors: errors.mapped() });
+    }
+
+    const professor = new Professor({
+      nome: req.body.nome,
+      email: req.body.email,
+      senha: req.body.senha,
+      endereco: req.body.endereco,
+      revisado: false,
+      lattes: req.body.lattes,
+      biografia: req.body.biografia,
+      dataNascimento: req.body.dataNascimento,
+      materias: req.body.materias,
+
+    });
+
+    const newProfessor = await professor.save();
+    const token = generateJWT(newProfessor);
+    return res.json({ newProfessor, token });
+  } catch (error) {
+    return res
+      .status(httpStatus.INTERNAL_SERVER_ERROR)
+      .json({ error: 'Ocorreu um erro ao criar o professor' });
   }
 }
 
