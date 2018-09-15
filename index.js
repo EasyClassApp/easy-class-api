@@ -26,18 +26,20 @@ const router = express.Router();
 router.post('/signup', authValidation.signupValidation, authController.signup);
 router.post('/signin', authValidation.signinValidation, authController.signin);
 
+router.post('/professor/signup', authValidation.signupProfessorValidation, authController.signupProfessor);
+
 router.get('/user', userController.getUsers);
 router.get('/user/:userId', userController.getUserById);
 router.put('/user/:userId', userController.updateUser);
 router.delete('/user/:userId', userController.deleteUser);
 
-//ALUNO
+// ALUNO
 router.get('/aluno', alunoController.getAlunos);
 router.post('/aluno', alunoController.createAluno);
 
-//PROFESSOR
-router.get('/aluno', professorController.getProfessores);
-router.post('/aluno', professorController.createProfessor);
+// PROFESSOR
+router.get('/professor', professorController.getProfessores);
+router.post('/professor', professorController.createProfessor);
 
 router.get('/class', classController.getClasses);
 router.get('/class/:classId', authorize, classController.getClassById);
