@@ -9,6 +9,8 @@ import * as userController from './controllers/user/userController';
 
 import * as classController from './controllers/class/classController';
 
+import * as materiaController from './controllers/materia/materiaController';
+
 // create and configure Express server
 const app = express();
 configuration(app);
@@ -29,6 +31,8 @@ router.delete('/user/:userId', userController.deleteUser);
 
 router.get('/class', classController.getClasses);
 router.get('/class/:classId', authorize, classController.getClassById);
+
+router.get('/materias', materiaController.getMaterias);
 
 app.use('/api', router);
 
