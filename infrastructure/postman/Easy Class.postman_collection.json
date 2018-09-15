@@ -1,290 +1,246 @@
 {
-	"id": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-	"name": "Easy Class",
-	"description": "",
-	"order": [],
-	"folders": [
+	"info": {
+		"_postman_id": "ed54758f-ffa1-4971-b13e-cecd5b6c448c",
+		"name": "Easy Class",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
 			"name": "Auth",
-			"description": "",
-			"collectionId": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-			"order": [
-				"92ea9344-abb4-46ee-bbb5-d0214f2e84ef",
-				"542a03b8-053b-cc44-481d-0648d9ecf7dd"
-			],
-			"owner": "1034757",
-			"folders_order": [],
-			"id": "ccc52235-e752-b843-f69a-7b8a94bddd82"
-		},
-		{
-			"name": "Class",
-			"description": "",
-			"collectionId": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-			"order": [
-				"79c1b171-4402-15a9-c2ef-11b021572d1e",
-				"fdc7a2f0-ef14-dbdd-cfa4-c22086d19f11"
-			],
-			"owner": "1034757",
-			"folders_order": [],
-			"id": "ec622cb3-0505-7b18-2aef-086425cef442"
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Funcionário Easy Class\",\n    \"email\": \"funcionario@easyclass.com.br\",\n    \"password\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/signup",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Funcionário Easy Class\",\n    \"email\": \"funcionario@easyclass.com.br\",\n    \"password\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/signin",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "User",
-			"description": "",
-			"collectionId": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-			"order": [
-				"3443ba78-029b-4fb1-abdc-b73eb8188093",
-				"78d90388-17ec-4104-810d-bd8be8afd7be",
-				"4342367d-82c1-4f45-a37d-a9fb2731f07f",
-				"31edb386-884a-4d69-9dbb-d35c44d00385"
-			],
-			"owner": "1034757",
-			"folders_order": [],
-			"id": "9258de5c-ba97-6224-683d-c862da0005fe"
-		}
-	],
-	"folders_order": [
-		"ccc52235-e752-b843-f69a-7b8a94bddd82",
-		"9258de5c-ba97-6224-683d-c862da0005fe",
-		"ec622cb3-0505-7b18-2aef-086425cef442"
-	],
-	"timestamp": 0,
-	"owner": "1034757",
-	"public": false,
-	"requests": [
-		{
-			"id": "31edb386-884a-4d69-9dbb-d35c44d00385",
-			"headers": "",
-			"headerData": [],
-			"url": "{{base-url}}/user/5b75a0f97cd87f26e4ad40c3",
-			"folder": "9258de5c-ba97-6224-683d-c862da0005fe",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1534435793012,
-			"name": "user/{user-id}",
-			"description": null,
-			"collectionId": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-			"responses": []
-		},
-		{
-			"id": "3443ba78-029b-4fb1-abdc-b73eb8188093",
-			"headers": "",
-			"headerData": [],
-			"url": "{{base-url}}/user",
-			"folder": "9258de5c-ba97-6224-683d-c862da0005fe",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1534435289885,
-			"name": "user",
-			"description": "",
-			"collectionId": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-			"responses": [],
-			"isFromCollection": true,
-			"collectionRequestId": "3443ba78-029b-4fb1-abdc-b73eb8188093"
-		},
-		{
-			"id": "4342367d-82c1-4f45-a37d-a9fb2731f07f",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
+			"item": [
 				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{base-url}}/user/5b75a0f97cd87f26e4ad40c3",
-			"folder": "9258de5c-ba97-6224-683d-c862da0005fe",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1534435644500,
-			"name": "user/{user-id}",
-			"description": null,
-			"collectionId": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-			"responses": [],
-			"rawModeData": "{\n  \"name\": \"Funcionário Easy Class Editado\"\n}"
-		},
-		{
-			"id": "542a03b8-053b-cc44-481d-0648d9ecf7dd",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"name": "user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base-url}}/user",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
 				},
 				{
-					"key": "",
-					"value": "",
-					"enabled": true
-				}
-			],
-			"url": "{{base-url}}/signin",
-			"folder": "ccc52235-e752-b843-f69a-7b8a94bddd82",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1534435566156,
-			"name": "signin",
-			"description": null,
-			"collectionId": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-			"responses": [],
-			"rawModeData": "{\n    \"name\": \"Funcionário Easy Class\",\n    \"email\": \"funcionario@easyclass.com.br\",\n    \"password\": \"1234\"\n}"
-		},
-		{
-			"id": "78d90388-17ec-4104-810d-bd8be8afd7be",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{base-url}}/user/5b75a0f97cd87f26e4ad40c3",
-			"folder": "9258de5c-ba97-6224-683d-c862da0005fe",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1534435619012,
-			"name": "user/{user-id}",
-			"description": "",
-			"collectionId": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-			"responses": [],
-			"rawModeData": "{\n  \"description\": \"This is some other task\",\n  \"owner\": \"Rafael\",\n  \"dueDate\": \"11/25/2018\",\n  \"completed\": false\n}"
-		},
-		{
-			"id": "79c1b171-4402-15a9-c2ef-11b021572d1e",
-			"headers": "",
-			"headerData": [],
-			"url": "{{base-url}}/class",
-			"folder": "ec622cb3-0505-7b18-2aef-086425cef442",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1534437786428,
-			"name": "class",
-			"description": "",
-			"collectionId": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-			"responses": []
-		},
-		{
-			"id": "92ea9344-abb4-46ee-bbb5-d0214f2e84ef",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"name": "user/{user-id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"This is some other task\",\n  \"owner\": \"Rafael\",\n  \"dueDate\": \"11/25/2018\",\n  \"completed\": false\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/user/5b75a0f97cd87f26e4ad40c3",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"user",
+								"5b75a0f97cd87f26e4ad40c3"
+							]
+						}
+					},
+					"response": []
 				},
 				{
-					"key": "",
-					"value": "",
-					"enabled": true
-				}
-			],
-			"url": "{{base-url}}/signup",
-			"folder": "ccc52235-e752-b843-f69a-7b8a94bddd82",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1534435590107,
-			"name": "signup",
-			"description": "",
-			"collectionId": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-			"responses": [],
-			"rawModeData": "{\n    \"name\": \"Funcionário Easy Class\",\n    \"email\": \"funcionario@easyclass.com.br\",\n    \"password\": \"1234\"\n}"
-		},
-		{
-			"id": "fdc7a2f0-ef14-dbdd-cfa4-c22086d19f11",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1Yjc1OWZiOTdjZDg3ZjI2ZTRhZDQwYzIiLCJpYXQiOjE1MzQ0MzgwMjU1NzZ9.goxbpZ54YFGVDDFk1aNduMPH_7YafjUnKPkLl2HEwxI\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"name": "user/{user-id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Funcionário Easy Class Editado\"\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/user/5b75a0f97cd87f26e4ad40c3",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"user",
+								"5b75a0f97cd87f26e4ad40c3"
+							]
+						}
+					},
+					"response": []
 				},
 				{
-					"key": "Authorization",
-					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1Yjc1OWZiOTdjZDg3ZjI2ZTRhZDQwYzIiLCJpYXQiOjE1MzQ0MzgwMjU1NzZ9.goxbpZ54YFGVDDFk1aNduMPH_7YafjUnKPkLl2HEwxI",
-					"description": "",
-					"enabled": true
+					"name": "user/{user-id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base-url}}/user/5b75a0f97cd87f26e4ad40c3",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"user",
+								"5b75a0f97cd87f26e4ad40c3"
+							]
+						}
+					},
+					"response": []
 				}
-			],
-			"url": "{{base-url}}/class/5b75a0f97cd87f26e4ad40c3",
-			"folder": "ec622cb3-0505-7b18-2aef-086425cef442",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1534455068683,
-			"name": "class/{class-id}",
-			"description": "",
-			"collectionId": "5a6064f1-3f22-4471-abc4-a142a4d8e1fb",
-			"responses": [],
-			"rawModeData": "{\n  \"description\": \"This is some other task\",\n  \"owner\": \"Rafael\",\n  \"dueDate\": \"11/25/2018\",\n  \"completed\": false\n}"
+			]
+		},
+		{
+			"name": "Class",
+			"item": [
+				{
+					"name": "class",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base-url}}/class",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"class"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "class/{class-id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1Yjc1OWZiOTdjZDg3ZjI2ZTRhZDQwYzIiLCJpYXQiOjE1MzQ0MzgwMjU1NzZ9.goxbpZ54YFGVDDFk1aNduMPH_7YafjUnKPkLl2HEwxI"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"This is some other task\",\n  \"owner\": \"Rafael\",\n  \"dueDate\": \"11/25/2018\",\n  \"completed\": false\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/class/5b75a0f97cd87f26e4ad40c3",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"class",
+								"5b75a0f97cd87f26e4ad40c3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Materia",
+			"item": []
+		},
+		{
+			"name": "materias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{base-url}}/materias",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"materias"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
