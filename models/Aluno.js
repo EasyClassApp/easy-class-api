@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt-nodejs';
+import AvaliacaoAluno from './AvaliacaoAluno';
+import Materia from './Materia';
+import Aula from './Aula';
 
 const alunoSchema = new mongoose.Schema({
   nome: { type: String, required: true },
