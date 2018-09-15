@@ -6,8 +6,7 @@ export async function getClasses(req, res) {
     return res.send('OK - getClasses');
   } catch (error) {
     return res
-      .status(httpStatus.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Ocorreu um erro ao buscar a lista de aulas' });
+      .status(httpStatus.INTERNAL_SERVER_ERROR);
   }
 }
 
@@ -16,7 +15,6 @@ export async function getClassById(req, res) {
     return res.send('OK - getClassById');
   } catch (error) {
     return res
-      .status(httpStatus.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Ocorreu um erro ao buscar a aula informada' });
+      .status(httpStatus.INTERNAL_SERVER_ERROR);
   }
 }
