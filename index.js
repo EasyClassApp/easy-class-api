@@ -6,6 +6,8 @@ import * as authController from './controllers/auth/authController';
 import * as authValidation from './controllers/auth/authValidation';
 
 import * as userController from './controllers/user/userController';
+import * as alunoController from './controllers/user/alunoController';
+import * as professorController from './controllers/user/professorController';
 
 import * as classController from './controllers/class/classController';
 
@@ -28,6 +30,14 @@ router.get('/user', userController.getUsers);
 router.get('/user/:userId', userController.getUserById);
 router.put('/user/:userId', userController.updateUser);
 router.delete('/user/:userId', userController.deleteUser);
+
+//ALUNO
+router.get('/aluno', alunoController.getAlunos);
+router.post('/aluno', alunoController.createAluno);
+
+//PROFESSOR
+router.get('/aluno', professorController.getProfessores);
+router.post('/aluno', professorController.createProfessor);
 
 router.get('/class', classController.getClasses);
 router.get('/class/:classId', authorize, classController.getClassById);

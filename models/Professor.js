@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt-nodejs';
 
+import AvaliacaoProfessor from './AvaliacaoProfessor';
+import Materia from './Materia';
+import Aula from './Aula';
+
 const professorSchema = new mongoose.Schema({
   nome: { type: String, required: true },
   email: { type: String, required: true },
@@ -14,7 +18,7 @@ const professorSchema = new mongoose.Schema({
   dataNascimento: { type: Date, required: true },
   agenda: { type: [Date], required: false },
   materias: { type: [Materia], required: false },
-  avaliacoes: { type: [Avaliacao], required: false },
+  avaliacoes: { type: [AvaliacaoProfessor], required: false },
   aulas: { type: [Aula], required: false },
 });
 
