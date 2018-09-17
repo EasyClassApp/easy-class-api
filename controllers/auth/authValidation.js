@@ -62,13 +62,8 @@ export const signupProfessorValidation = [
 
     .custom(async (email, { req }) => {
       const professores = await Professor.find({ email });
-      return professores.length === 0;
-    })
-    .withMessage('O email informado já foi cadastrado')
-
-    .custom(async (email, { req }) => {
       const alunos = await Aluno.find({ email });
-      return alunos.length === 0;
+      return professores.length === 0 && alunos.length === 0;
     })
     .withMessage('O email informado já foi cadastrado'),
 
@@ -97,6 +92,49 @@ export const signupProfessorValidation = [
     check('materias')
     .exists()
     .withMessage('Pelo menos uma materia deve ser informada'),
+];
 
+export const signupAlunoValidation = [
+  check('nome')
+    .exists()
+    .withMessage('O nome deve ser informado!')
 
+    .isLength({ min: 3 })
+    .withMessage('O nome deve possuir pelo menos dois caracteres'),
+
+  check('email')
+    .exists()
+    .withMessage('O email deve ser informado')
+
+    .isEmail()
+    .withMessage('O email informado é inválido')
+
+    .custom(async (email, { req }) => {
+      const professores = await Professor.find({ email });
+      const alunos = await Aluno.find({ email });
+      return professores.length === 0 && alunos.length === 0;
+    })
+    .withMessage('O email informado já foi cadastrado'),
+
+    check('senha')
+    .exists()
+    .withMessage('A senha deve ser informada')
+    .isLength({min: 5})
+    .withMessage('A senha deve conter pelo menos 4 caracteres'),
+
+    check('endereco')
+    .exists()
+    .withMessage('O endereço deve ser informada'),
+
+    check('responsavel')
+    .exists()
+    .withMessage('O responsavel de ser informado'),
+
+    check('numeroDependentes')
+    .exists()
+    .withMessage('O numeroDependentes deve ser informada'),
+
+    check('dataNascimento')
+    .exists()
+    .withMessage('A data de nascimento deve ser informada')
 ];

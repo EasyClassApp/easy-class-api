@@ -27,6 +27,7 @@ router.post('/signup', authValidation.signupValidation, authController.signup);
 router.post('/signin', authValidation.signinValidation, authController.signin);
 
 router.post('/professor/signup', authValidation.signupProfessorValidation, authController.signupProfessor);
+router.post('/aluno/signup', authValidation.signupAlunoValidation, authController.signupAluno);
 
 router.get('/user', userController.getUsers);
 router.get('/user/:userId', userController.getUserById);
