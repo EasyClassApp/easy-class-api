@@ -26,6 +26,7 @@ const router = express.Router();
 router.post('/signup', authValidation.signupValidation, authController.signup);
 router.post('/signin', authValidation.signinValidation, authController.signin);
 
+// SIGNUP PROFESSOR E ALUNO
 router.post('/professor/signup', authValidation.signupProfessorValidation, authController.signupProfessor);
 router.post('/aluno/signup', authValidation.signupAlunoValidation, authController.signupAluno);
 

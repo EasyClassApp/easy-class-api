@@ -84,7 +84,7 @@ export async function signupAluno(req, res) {
       senha: req.body.senha,
       endereco: req.body.endereco,
       responsavel: req.body.responsavel,
-      numeroDependentes: req.body.lattesnumeroDependentes,
+      numeroDependentes: req.body.numeroDependentes,
       dataNascimento: req.body.dataNascimento,
     });
 
@@ -94,7 +94,7 @@ export async function signupAluno(req, res) {
   } catch (error) {
     return res
       .status(httpStatus.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Ocorreu um erro ao criar o professor' });
+      .json({ error: 'Ocorreu um erro ao criar o aluno' });
   }
 }
 
