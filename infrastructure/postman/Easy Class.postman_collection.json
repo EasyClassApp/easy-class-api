@@ -24,15 +24,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"nome\": \"Silveirinha Bolado\",\n        \"email\": \"silveirinhaBrabo@pucris.br\",\n        \"senha\": \"ilovecats\",\n        \"endereco\": \"Rua Não sei aonde 98\",\n        \"lattes\": \"Lattes do Brabo\",\n        \"diploma\": \"Diploma do Brabo\",\n        \"biografia\":\"Eu sou o Chefe Silveira\",\n        \"dataNascimento\": \"01/01/1993\",\n        \"materias\":[]\n     }"
+							"raw": "{\n    \"name\": \"Funcionário Easy Class\",\n    \"email\": \"funcionario@easyclass.com.br\",\n    \"password\": \"1234\"\n}"
 						},
 						"url": {
-							"raw": "{{base-url}}/professor/signup",
+							"raw": "{{base-url}}/signup",
 							"host": [
 								"{{base-url}}"
 							],
 							"path": [
-								"professor",
 								"signup"
 							]
 						}
