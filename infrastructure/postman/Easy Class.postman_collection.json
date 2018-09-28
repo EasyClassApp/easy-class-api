@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ed54758f-ffa1-4971-b13e-cecd5b6c448c",
+		"_postman_id": "8472a2a3-71e0-427a-befd-1d762e71f4eb",
 		"name": "Easy Class",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -78,7 +78,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{base-url}}/user",
 							"host": [
@@ -150,7 +153,10 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{base-url}}/user/5b75a0f97cd87f26e4ad40c3",
 							"host": [
@@ -174,7 +180,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{base-url}}/class",
 							"host": [
@@ -222,25 +231,101 @@
 		},
 		{
 			"name": "Materia",
-			"item": []
+			"item": [
+				{
+					"name": "materias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/materias",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"materias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "materias",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "{{base-url}}/materias",
-					"host": [
-						"{{base-url}}"
-					],
-					"path": [
-						"materias"
-					]
+			"name": "Professor",
+			"item": [
+				{
+					"name": "signup professor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nome\": \"Silveirinha da silveira\",\n        \"email\": \"silveirinha@pucris.br\",\n        \"senha\": \"9988\",\n        \"endereco\": \"Rua Não sei aonde 98\",\n        \"lattes\": \"Lattes do tio\",\n        \"diploma\": \"Diploma do tio\",\n        \"biografia\":\"Eu sou o Chefe Silveira\",\n        \"dataNascimento\": \"01/01/1993\",\n        \"materias\":[]\n     }"
+						},
+						"url": {
+							"raw": "{{base-url}}/professor/signup",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"professor",
+								"signup"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Aluno",
+			"item": [
+				{
+					"name": "signup aluno",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nome\": \"Joao da silva\",\n        \"email\": \"jao@pucris.br\",\n        \"senha\": \"5544\",\n        \"endereco\": \"Rua Não sei aonde 98\",\n        \"dataNascimento\": \"01/01/1993\",\n        \"responsavel\": false,\n        \"numeroDependentes\": 0\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/aluno/signup",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"aluno",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
