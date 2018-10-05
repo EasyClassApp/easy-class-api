@@ -42,6 +42,7 @@ router.post('/aluno', alunoController.createAluno);
 // PROFESSOR
 router.get('/professor', professorController.getProfessores);
 router.post('/professor', professorController.createProfessor);
+router.post('/professor/validate', professorController.validateProfessor);
 
 router.get('/class', classController.getClasses);
 router.get('/class/:classId', authorize, classController.getClassById);

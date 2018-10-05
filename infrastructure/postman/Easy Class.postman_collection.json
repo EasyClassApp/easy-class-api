@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8472a2a3-71e0-427a-befd-1d762e71f4eb",
+		"_postman_id": "cae3e2da-cab8-4bcd-89a4-cbcaab27d8dd",
 		"name": "Easy Class",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -274,7 +274,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"nome\": \"Silveirinha da silveira\",\n        \"email\": \"silveirinha@pucris.br\",\n        \"senha\": \"9988\",\n        \"endereco\": \"Rua Não sei aonde 98\",\n        \"lattes\": \"Lattes do tio\",\n        \"diploma\": \"Diploma do tio\",\n        \"biografia\":\"Eu sou o Chefe Silveira\",\n        \"dataNascimento\": \"01/01/1993\",\n        \"materias\":[]\n     }"
+							"raw": "{\n\t\"nome\": \"Silveirinha da silveira\",\n\t\"email\": \"silveirinha@pucris.br\",\n\t\"senha\": \"99882\",\n\t\"endereco\": \"Rua Não sei aonde 98\",\n\t\"lattes\": \"Lattes do tio\",\n\t\"diploma\": \"Diploma do tio\",\n\t\"biografia\":\"Eu sou o Chefe Silveira\",\n\t\"dataNascimento\": \"01/01/1993\",\n\t\"materias\":[],\n\t\"camposInvalidos\":[],\n\t\"localAula\": \"combinar\"\n}"
 						},
 						"url": {
 							"raw": "{{base-url}}/professor/signup",
@@ -284,6 +284,37 @@
 							"path": [
 								"professor",
 								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate professor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"silveirinha@pucris.br\",\n    \"revisado\": true,\n    \"camposInvalidos\":[\"senha\"]\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/professor/validate",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"professor",
+								"validate"
 							]
 						}
 					},
