@@ -13,7 +13,7 @@ export async function getProfessores(req, res) {
   }
 
 export async function createProfessor(req, res) {
-    try {    
+    try {
       var professor = new Professor();
       professor.set(req.body);
       await professor.save();
@@ -22,6 +22,35 @@ export async function createProfessor(req, res) {
       return res
         .status(httpStatus.INTERNAL_SERVER_ERROR)
         .json({ error: 'Ocorreu um erro ao tentar cadastrar professor' });
-    
+
     }
+}
+
+export async function validateProfessor(req, res) {
+
+  try {
+    var emailProfessor = req.body.email;
+    //var professor = new Professor();
+    Professor.update(
+      {
+        email: emailProfessor
+      },{
+        $set:
+          {
+              revisado: req.body.revisado,
+              camposInvalidos: req.body.camposInvalidos,
+          }
+      },function(err, raw) {
+          if (err) {
+            res.send(err);
+          }
+          res.send({message: "Professor atualizado"});
+        });
+    //return res.json(professor);
+  } catch (error) {
+    return res
+      .status(httpStatus.INTERNAL_SERVER_ERROR)
+      .json({ error: 'Ocorreu um erro ao tentar validar professor' });
+
+  }
 }
