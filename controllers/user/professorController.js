@@ -1,6 +1,7 @@
 /* eslint-disable */
 import httpStatus from 'http-status';
 import Professor from '../../models/Professor';
+import User from "../../models/User";
 
 export async function getProfessores(req, res) {
   try {
@@ -64,5 +65,16 @@ export async function validateProfessor(req, res) {
       .status(httpStatus.INTERNAL_SERVER_ERROR)
       .json({ error: 'Ocorreu um erro ao tentar validar professor' });
 
+  }
+}
+
+export async function getAgendaProfessor(req, res) {
+  try {
+    const professor = await Professor.findById(req.params.id);
+    return res.send(professor.agenda);
+  } catch (error) {
+    return res
+      .status(httpStatus.INTERNAL_SERVER_ERROR)
+      .json({ error: 'Ocorreu um erro ao buscar agenda do professor' });
   }
 }
