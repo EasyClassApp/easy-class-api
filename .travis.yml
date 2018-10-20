@@ -17,7 +17,7 @@ install:
 
 script:
   # runs tests on Travis host and, if they pass, generate the image
-  - npm run test-ci
+  - npm run test
 
 deploy:
   provider: heroku
