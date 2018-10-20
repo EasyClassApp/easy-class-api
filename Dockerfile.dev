@@ -1,7 +1,8 @@
 # specify Docker base image
-FROM node
+FROM node:latest
 
-# the folder application within the container (prevents conflicts with OS folders)
+# the folder application within the container
+RUN mkdir -p /usr/src/app
 WORKDIR  /usr/src/app
 
 # install dependencies (copies 'from folder' --> 'destination folder')

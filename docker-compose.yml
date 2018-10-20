@@ -1,7 +1,7 @@
-version: '3'
+version: '2'
 services:
   app:
-    container_name: "app-container"
+    container_name: "api-dev-container"
     build:
       context: ./
       dockerfile: Dockerfile.dev
@@ -18,13 +18,3 @@ services:
     image: mongo
     ports:
       - "27017:27017"
-
-  test:
-    container_name: "test-container"
-    build:
-      context: ./
-      dockerfile: Dockerfile.test
-    volumes:
-      - .:/usr/src/app            # bind container's src folder to local files in order to enable webpack hot reload feature
-      - /usr/src/app/node_modules # disables bind just for the container's 'node_modules' folder since it is specific to the container's specs (i.e. linux, etc)
-    command: ["npm", "test"]
