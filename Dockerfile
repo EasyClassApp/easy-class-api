@@ -5,9 +5,12 @@ FROM node:latest
 RUN mkdir -p /usr/src/app
 WORKDIR  /usr/src/app
 
-# install dependencies (copies 'from folder' --> 'destination folder')
+# copies package.json to container and install dependencies
 COPY package.json /usr/src/app
 RUN npm install
+
+# copies application files to container and generates build
+COPY . /usr/src/app
 RUN npm run build
 
 # startup command
