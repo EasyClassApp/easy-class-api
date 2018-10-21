@@ -25,7 +25,3 @@ API REST do projeto Easy Class.
 ````
 # npm run test
 ````
-
-## Consumindo a API com Postman
-
-Dentro da pasta *infrastructure/postman* estão as definições de coleções e environment que podem ser importados na ferramenta Postman para testar os endpoints desta API.
