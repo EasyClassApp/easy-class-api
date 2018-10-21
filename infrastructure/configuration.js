@@ -9,15 +9,15 @@ import './passport';
 
 export default (app) => {
   if (process.env.NODE_ENV === 'development') {
-    // cors
-    const corsOptions = {
-      origin: [process.env.CLIENT_URL],
-    };
-    app.use(cors(corsOptions));
-
     // logging
     app.use(morgan('short'));
   }
+
+  // cors
+  const corsOptions = {
+    origin: [process.env.CLIENT_URL],
+  };
+  app.use(cors(corsOptions));
 
   // parse json and compression
   app.use(bodyParser.json());

@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Program",
       "preLaunchTask": "Compile",
-      "program": "${workspaceFolder}\\server-build/index.js"
+      "program": "${workspaceFolder}\\build/index.js"
     }
   ]
 }

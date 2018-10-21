@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest",
-    "build": "rimraf server-build/ && babel ./ --out-dir server-build/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,./scripts --copy-files --source-maps --include-dotfiles",
-    "start-dev": "nodemon index.js --exec babel-node",
-    "start": "babel-node index.js"
+    "start": "nodemon index.js --exec babel-node",
+    "build": "rimraf build/ && babel ./ --out-dir build/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,./scripts --copy-files --source-maps --include-dotfiles"
   },
   "author": "Rafael Companhoni",
   "license": "ISC",

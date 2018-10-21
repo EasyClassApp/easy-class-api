@@ -2,21 +2,23 @@
 import supertest from 'supertest';
 import mongoose from 'mongoose';
 import server from '../index';
-import Project from '../models/Project';
+import User from '../models/User';
 
-describe('Projects', () => {
+describe('Easy Class API', () => {
   let request;
 
   beforeEach(async (done) => {
     request = supertest(server);
 
-    await Project.remove({});
+    await User.remove({});
 
-    const p1 = new Project({ name: 'Projeto Teste 1' });
-    await p1.save();
+    const user = new User({
+      name: 'Test User',
+      email: 'testuser@test.com',
+      password: '123456',
+    });
 
-    const p2 = new Project({ name: 'Projeto Teste 2' });
-    await p2.save();
+    await user.save();
 
     done();
   });
@@ -27,50 +29,16 @@ describe('Projects', () => {
     done();
   });
 
-  describe('GET api/projects', () => {
-    test('Retrieve the complete list of projects', async (done) => {
+  describe('GET api/user', () => {
+    test('Obtém lista de usuários administradores', async (done) => {
       try {
-        const res = await request.get('/api/projects');
+        const res = await request.get('/api/user');
         expect(res.statusCode).toBe(200);
-        expect(res.body).toHaveLength(2);
+        expect(res.body).toHaveLength(1);
         done();
       } catch (err) {
-        console.log('GET api/evictions error:', err);
+        console.log('GET api/user error:', err);
       }
-    });
-  });
-
-  describe('POST api/projects', () => {
-    test('Create a new project', (done) => {
-      request
-        .post('/api/projects')
-        .send({ name: 'Novo Projeto' })
-        .set('Content-Type', 'application/json')
-        .end(async (err, res) => {
-          expect(res.statusCode).toBe(200);
-          done();
-        });
-    });
-
-    test("Can't create a project without a name", (done) => {
-      request
-        .post('/api/projects')
-        .set('Content-Type', 'application/json')
-        .end(async (err, res) => {
-          expect(res.statusCode).toBe(422);
-          done();
-        });
-    });
-
-    test("Can't create a project with an empty name", (done) => {
-      request
-        .post('/api/projects')
-        .send({ name: '' })
-        .set('Content-Type', 'application/json')
-        .end(async (err, res) => {
-          expect(res.statusCode).toBe(422);
-          done();
-        });
     });
   });
 });
