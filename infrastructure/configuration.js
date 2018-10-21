@@ -1,5 +1,3 @@
-import express from 'express';
-import path from 'path';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import compression from 'compression';
@@ -22,14 +20,4 @@ export default (app) => {
   // parse json and compression
   app.use(bodyParser.json());
   app.use(compression());
-
-  // serve static assets when in production
-  if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('../client/build'));
-
-    // for any other non-api route returns 'index.html'
-    app.get(/^\/(?!(api)).*/, (req, res) => {
-      res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
-    });
-  }
 };

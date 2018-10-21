@@ -10,11 +10,8 @@ COPY package.json /usr/src/app
 RUN npm install
 RUN npm run build
 
-# copy application files (moved here to make use of Docker's cache machanism)
-COPY ./build /usr/src/app
-
 # startup command
-CMD ["node", "index.js"]
+CMD ["npm", "run", "start-build"]
 
 # open container port
 EXPOSE 8081
