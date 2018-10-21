@@ -6,12 +6,11 @@ import './database';
 import './passport';
 
 export default (app) => {
-  if (process.env.NODE_ENV === 'development') {
-    // logging
-    app.use(morgan('short'));
-  }
+  // logging
+  app.use(morgan('short'));
 
   // cors
+  console.log('SETTING CORS', process.env.CLIENT_URL); // eslint-disable-line
   const corsOptions = {
     origin: [process.env.CLIENT_URL],
   };
