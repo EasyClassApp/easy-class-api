@@ -17,7 +17,7 @@ configuration(app);
 const authorize = passport.authenticate('jwt', { session: false });
 
 const router = express.Router();
-router.get('', (req, res) => res.send(`Easy Class API (${process.env.NODE_ENV})`));
+router.get('', (req, res) => res.send(`Easy Class API (${process.env.NODE_ENV}) 1`));
 
 // admin users
 router.post('/signup', authValidation.signupValidation, authController.signup);

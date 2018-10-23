@@ -20,7 +20,7 @@ install:
 script:
   - npm run test
 
-# STAGING: tags the generated image, push to Heroku registry and the release on the app
+# STAGING ENVIRONMENT: tags the generated image, push to Heroku registry and the release on the app
 deploy:
   provider: heroku
   app: "$HEROKU_APP_NAME_STAGING"
@@ -32,7 +32,7 @@ deploy:
   on:
     branch: staging
 
-# PRODUCTION: tags the generated image, push to Heroku registry and the release on the app
+# PRODUCTION ENVIRONMENT: tags the generated image, push to Heroku registry and the release on the app
 deploy:
   provider: heroku
   app: "$HEROKU_APP_NAME"
