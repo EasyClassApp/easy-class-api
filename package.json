@@ -7,7 +7,7 @@
     "test": "cross-env NODE_ENV=test jest",
     "start": "nodemon -L server.js --exec babel-node",
     "build": "rimraf build/ && babel ./ --out-dir build/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,./scripts --copy-files --source-maps --include-dotfiles",
-    "start-build": "node build/index.js"
+    "start-build": "node build/server.js"
   },
   "author": "Rafael Companhoni",
   "license": "ISC",
