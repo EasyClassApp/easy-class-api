@@ -12,6 +12,5 @@ const connectionString = {
   },
 };
 
-console.log('CONNECTING TO DB ', connectionString[process.env.NODE_ENV].databaseUri); // eslint-disable-line
 const db = connectionString[process.env.NODE_ENV].databaseUri;
 mongoose.connect(db);

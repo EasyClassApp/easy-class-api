@@ -7,7 +7,7 @@ services:
   - docker
   - mongodb
 
-# install Heroku toolbelt and login
+# install Heroku toolbelt and login on Docker Hub
 before_install:
   - wget -qO- https://toolbelt.heroku.com/install.sh | sh
   - echo "$HEROKU_KEY" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com

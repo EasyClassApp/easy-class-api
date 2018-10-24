@@ -48,7 +48,4 @@ router.get('/class/:classId', authorize, classController.getClassById);
 router.get('/materias', materiaController.getMaterias);
 
 app.use('/api', router);
-const port = process.env.NODE_ENV === 'test' ? process.env.PORT_TEST : process.env.PORT;
-export default app.listen(port, () => {
-  console.info(`server started on port ${port} (${app.get('env')})`); // eslint-disable-line
-});
+export default app;

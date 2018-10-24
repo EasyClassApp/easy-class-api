@@ -10,7 +10,6 @@ export default (app) => {
   app.use(morgan('short'));
 
   // cors
-  console.log('SETTING CORS', process.env.CLIENT_URL); // eslint-disable-line
   const corsOptions = {
     origin: [process.env.CLIENT_URL],
   };
