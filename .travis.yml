@@ -20,25 +20,25 @@ install:
 script:
   - npm run test
 
-# STAGING ENVIRONMENT: tags the generated image, push to Heroku registry and the release on the app
 deploy:
-  provider: heroku
-  app: "$HEROKU_APP_NAME_STAGING"
-  api_key:
-    secure: "$HEROKU_KEY"
-  script:
-    docker push registry.heroku.com/$HEROKU_APP_NAME_STAGING/web;
-    heroku container:release web --app $HEROKU_APP_NAME_STAGING
-  on:
-    branch: staging
+  # STAGING ENVIRONMENT: tags the generated image, push to Heroku registry and the release on the app
+  - provider: heroku
+    app: "$HEROKU_APP_NAME_STAGING"
+    api_key:
+      secure: "$HEROKU_KEY"
+    script:
+      docker push registry.heroku.com/$HEROKU_APP_NAME_STAGING/web;
+      heroku container:release web --app $HEROKU_APP_NAME_STAGING
+    on:
+      branch: staging
 
-# PRODUCTION ENVIRONMENT: tags the generated image, push to Heroku registry and the release on the app
-  provider: heroku
-  app: "$HEROKU_APP_NAME"
-  api_key:
-    secure: "$HEROKU_KEY"
-  script:
-    docker push registry.heroku.com/$HEROKU_APP_NAME/web;
-    heroku container:release web --app $HEROKU_APP_NAME
-  on:
-    branch: master
+  # PRODUCTION ENVIRONMENT: tags the generated image, push to Heroku registry and the release on the app
+  - provider: heroku
+    app: "$HEROKU_APP_NAME"
+    api_key:
+      secure: "$HEROKU_KEY"
+    script:
+      docker push registry.heroku.com/$HEROKU_APP_NAME/web;
+      heroku container:release web --app $HEROKU_APP_NAME
+    on:
+      branch: master
