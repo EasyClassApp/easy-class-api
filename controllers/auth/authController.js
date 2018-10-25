@@ -1,3 +1,4 @@
+/* eslint-disable */
 import httpStatus from 'http-status';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
@@ -86,8 +87,8 @@ export async function signupAluno(req, res) {
       responsavel: req.body.responsavel,
       numeroDependentes: req.body.numeroDependentes,
       dataNascimento: req.body.dataNascimento,
+      materiaDificuldade: req.body.materiaDificuldade,
     });
-
     const newAluno = await aluno.save();
     const token = generateJWT(newAluno);
     return res.json({ newAluno, token });
