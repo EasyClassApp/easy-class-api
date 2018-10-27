@@ -146,10 +146,7 @@ export const alunoMarcarAulaValidation = [
 
     check('aluno')
     .exists()
-    .withMessage('O nome do aluno deve ser informado!')
-
-    .isLength({ min: 3 })
-    .withMessage('O nome deve possuir pelo menos dois caracteres'),
+    .withMessage('O nome do aluno deve ser informado!'),
 
     check('horario')
     .exists()
