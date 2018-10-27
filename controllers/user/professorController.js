@@ -78,3 +78,27 @@ export async function getAgendaProfessor(req, res) {
       .json({ error: 'Ocorreu um erro ao buscar agenda do professor' });
   }
 }
+
+export async function putHorariosProfessor(req, res) {
+  try {
+    console.log(req.body.agenda);
+    Professor.update(
+      {
+        _id: req.params.id
+      },{
+        $set:
+          {
+            agenda: req.body.agenda,
+          }
+      },function(err, raw) {
+        if (err) {
+          res.send(err);
+        }
+        res.send({message: "Horários cadastrados"});
+      });
+  } catch (error) {
+    return res
+      .status(httpStatus.INTERNAL_SERVER_ERROR)
+      .json({ error: 'Ocorreu um erro ao cadastrar horários' });
+  }
+}

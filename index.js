@@ -41,10 +41,11 @@ router.post('/aluno', alunoController.createAluno);
 
 // PROFESSOR
 router.get('/professor/:id', professorController.getProfessor);
-router.get('/professor/:id/agenda', professorController.getAgendaProfessor);
+router.get('/professor/agenda/:id', professorController.getAgendaProfessor);
+router.put('/professor/agenda/:id', professorController.putHorariosProfessor);
 router.get('/professor', professorController.getProfessores);
 router.post('/professor', professorController.createProfessor);
-router.post('/professor/validate', professorController.validateProfessor);
+router.put('/professor/validate', professorController.validateProfessor);
 
 router.get('/class', classController.getClasses);
 router.get('/class/:classId', authorize, classController.getClassById);

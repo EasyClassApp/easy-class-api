@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cae3e2da-cab8-4bcd-89a4-cbcaab27d8dd",
+		"_postman_id": "b49ababd-28b5-4b4d-8b38-40729c62431b",
 		"name": "Easy Class",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -259,7 +259,7 @@
 			"name": "Professor",
 			"item": [
 				{
-					"name": "signup professor",
+					"name": "professor/signup",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -290,9 +290,40 @@
 					"response": []
 				},
 				{
-					"name": "validate professor",
+					"name": "professor/validate",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"silveirinha@pucris.br\",\n    \"revisado\": false,\n    \"camposInvalidos\":[\"senha\"]\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/professor/validate",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"professor",
+								"validate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "professor/agenda/{professor-id}",
+					"request": {
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -308,13 +339,46 @@
 							"raw": "{\n    \"email\": \"silveirinha@pucris.br\",\n    \"revisado\": true,\n    \"camposInvalidos\":[\"senha\"]\n}"
 						},
 						"url": {
-							"raw": "{{base-url}}/professor/validate",
+							"raw": "{{base-url}}/professor/agenda/5ba57d58c0695a4308c95393",
 							"host": [
 								"{{base-url}}"
 							],
 							"path": [
 								"professor",
-								"validate"
+								"agenda",
+								"5ba57d58c0695a4308c95393"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "professor/agenda/{professor-id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"agenda\" : [\"2018-07-10 18:30:00\",\n    \t\t\t\"2018-07-11 18:30:00\"]\n}"
+						},
+						"url": {
+							"raw": "{{base-url}}/professor/agenda/5ba57d58c0695a4308c95393",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"professor",
+								"agenda",
+								"5ba57d58c0695a4308c95393"
 							]
 						}
 					},
@@ -326,7 +390,7 @@
 			"name": "Aluno",
 			"item": [
 				{
-					"name": "signup aluno",
+					"name": "aluno/signup",
 					"request": {
 						"method": "POST",
 						"header": [
