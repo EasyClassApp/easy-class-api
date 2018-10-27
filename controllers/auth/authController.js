@@ -99,6 +99,39 @@ export async function signupAluno(req, res) {
   }
 }
 
+
+export async function alunoMarcarAula(req, res) {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res
+        .status(httpStatus.UNPROCESSABLE_ENTITY)
+        .json({ errors: errors.mapped() });
+    }
+
+    const aula = new Aula({
+      professor: req.body.professor,
+      aluno: req.body.aluno,
+      horario: req.body.horario,
+      local: req.body.local,
+      responsavel: req.body.responsavel,
+      status: req.body.status,
+      materia: req.body.materia,
+
+    });
+    const newAula = await aula.save();
+    const token = generateJWT(newAula);
+    return res.json({ newAula, token });
+  } catch (error) {
+    return res
+      .status(httpStatus.INTERNAL_SERVER_ERROR)
+      .json({ error: 'Ocorreu um erro ao agendar aula' });
+  }
+}
+
+
+
+
 // authenticates with LocalStrategy and returns user + JWT
 export async function signin(req, res, next) {
   const errors = validationResult(req);

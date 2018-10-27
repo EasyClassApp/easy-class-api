@@ -39,6 +39,9 @@ router.delete('/user/:userId', userController.deleteUser);
 router.get('/aluno', alunoController.getAlunos);
 router.post('/aluno', alunoController.createAluno);
 
+// ALUNO MARCAR AULA
+router.post('/aluno/marcaraula', authValidation.alunoMarcarAulaValidation, authController.alunoMarcarAula);
+
 // PROFESSOR
 router.get('/professor/:id', professorController.getProfessor);
 router.get('/professor/:id/agenda', professorController.getAgendaProfessor);

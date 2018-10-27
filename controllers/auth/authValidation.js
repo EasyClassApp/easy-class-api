@@ -107,7 +107,7 @@ export const signupAlunoValidation = [
     .withMessage('O email deve ser informado')
 
     .isEmail()
-    .withMessage('O email informado é inválido')
+    .withMessage('O email informado é inválid o')
 
     .custom(async (email, { req }) => {
       const professores = await Professor.find({ email });
@@ -133,8 +133,37 @@ export const signupAlunoValidation = [
     check('numeroDependentes')
     .exists()
     .withMessage('O numeroDependentes deve ser informada'),
-
     check('dataNascimento')
     .exists()
     .withMessage('A data de nascimento deve ser informada')
+];
+
+
+export const alunoMarcarAulaValidation = [
+  check('professor')
+    .exists()
+    .withMessage('O nome do professor deve ser informado!'),
+
+    check('aluno')
+    .exists()
+    .withMessage('O nome do aluno deve ser informado!')
+
+    .isLength({ min: 3 })
+    .withMessage('O nome deve possuir pelo menos dois caracteres'),
+
+    check('horario')
+    .exists()
+    .withMessage('O horario deve ser informada'),
+
+    check('local')
+    .exists()
+    .withMessage('O local deve ser informado'),
+
+    check('status')
+    .exists()
+    .withMessage('O status deve ser informado'),
+
+    check('materia')
+    .exists()
+    .withMessage('A materia deve ser informada')
 ];
