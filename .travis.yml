@@ -7,25 +7,38 @@ services:
   - docker
   - mongodb
 
+# install Heroku toolbelt and login on Docker Hub
 before_install:
-  # install Heroku toolbelt and login
   - wget -qO- https://toolbelt.heroku.com/install.sh | sh
   - echo "$HEROKU_KEY" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
 
+# install dependencies on Travis host
 install:
-  # install dependencies on Travis host
   - npm install
 
+# runs tests on Travis host and, if they pass, generate the image
 script:
-  # runs tests on Travis host and, if they pass, generate the image
   - npm run test
 
 deploy:
-  provider: heroku
-  app: "$HEROKU_APP_NAME"
-  api_key:
-    secure: "$HEROKU_KEY"
-  script:
-    # tags the generated image, push to Heroku registry and the release on the app
-    docker push registry.heroku.com/$HEROKU_APP_NAME/web;
-    heroku container:release web --app $HEROKU_APP_NAME
+  # STAGING ENVIRONMENT: tags the generated image, push to Heroku registry and the release on the app
+  - provider: heroku
+    app: "$HEROKU_APP_NAME_STAGING"
+    api_key:
+      secure: "$HEROKU_KEY"
+    script:
+      docker push registry.heroku.com/$HEROKU_APP_NAME_STAGING/web;
+      heroku container:release web --app $HEROKU_APP_NAME_STAGING
+    on:
+      branch: staging
+
+  # PRODUCTION ENVIRONMENT: tags the generated image, push to Heroku registry and the release on the app
+  - provider: heroku
+    app: "$HEROKU_APP_NAME"
+    api_key:
+      secure: "$HEROKU_KEY"
+    script:
+      docker push registry.heroku.com/$HEROKU_APP_NAME/web;
+      heroku container:release web --app $HEROKU_APP_NAME
+    on:
+      branch: master

@@ -6,10 +6,8 @@ import './database';
 import './passport';
 
 export default (app) => {
-  if (process.env.NODE_ENV === 'development') {
-    // logging
-    app.use(morgan('short'));
-  }
+  // logging
+  app.use(morgan('short'));
 
   // cors
   const corsOptions = {

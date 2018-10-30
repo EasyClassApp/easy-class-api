@@ -12,5 +12,6 @@ const connectionString = {
   },
 };
 
+console.log(`Connected to DB ${connectionString[process.env.NODE_ENV].databaseUri}`)
 const db = connectionString[process.env.NODE_ENV].databaseUri;
 mongoose.connect(db);

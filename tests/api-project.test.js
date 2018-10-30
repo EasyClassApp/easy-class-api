@@ -5,13 +5,7 @@ import server from '../index';
 import User from '../models/User';
 
 describe('Easy Class API', () => {
-  let request;
-
-  beforeEach(async (done) => {
-    request = supertest(server);
-
-    await User.remove({});
-
+  beforeAll(async (done) => {
     const user = new User({
       name: 'Test User',
       email: 'testuser@test.com',
@@ -23,16 +17,21 @@ describe('Easy Class API', () => {
     done();
   });
 
-  afterAll((done) => {
-    mongoose.connection.close();
-    server.close();
-    done();
+  afterAll(async (done) => {
+    try {
+      await User.remove({});
+      await mongoose.disconnect();
+      server.close();
+      done();
+    } catch (err) {
+      console.log('Error ending tests: ', err);
+    }
   });
 
   describe('GET api/user', () => {
     test('Obtém lista de usuários administradores', async (done) => {
       try {
-        const res = await request.get('/api/user');
+        const res = await supertest(server).get('/api/user');
         expect(res.statusCode).toBe(200);
         expect(res.body).toHaveLength(1);
         done();
