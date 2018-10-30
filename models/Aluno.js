@@ -14,7 +14,7 @@ const alunoSchema = new mongoose.Schema({
   notaMedia: { type: Number, required: false },
   dataNascimento: { type: Date, required: true },
   avaliacoes: { type: [avaliacaoAlunoSchema], required: false },
-  materiasDificuldade: { type: [materiaSchema], required: false },
+  materiaDificuldade: { type: materiaSchema, required: false },
   aulas: { type: [aulaSchema], required: false },
 });
 
