@@ -45,6 +45,8 @@ router.post('/aluno', alunoController.createAluno);
 // class
 router.get('/class', classController.getClasses);
 router.get('/class/:classId', authorize, classController.getClassById);
+router.put('/class/:id', classController.updateClass);
+router.delete('/class/:id', classController.removeClass);
 
 // materias
 router.get('/materias', materiaController.getMaterias);
