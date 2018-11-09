@@ -40,7 +40,7 @@ router.get('/aluno', alunoController.getAlunos);
 router.post('/aluno', alunoController.createAluno);
 
 // ALUNO MARCAR AULA
-router.post('/aluno/marcaraula', authValidation.alunoMarcarAulaValidation, authController.alunoMarcarAula);
+router.post('/aluno/marcaraula', classController.createAula);
 
 // PROFESSOR
 router.get('/professor/:id', professorController.getProfessor);

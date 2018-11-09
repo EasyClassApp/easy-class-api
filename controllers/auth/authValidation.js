@@ -3,6 +3,7 @@ import { check } from 'express-validator/check';
 import User from '../../models/User';
 import Professor from '../../models/Professor';
 import Aluno from '../../models/Aluno';
+import Aula from '../../models/Aula';
 
 export const signupValidation = [
   check('name')
@@ -138,7 +139,7 @@ export const signupAlunoValidation = [
     .withMessage('A data de nascimento deve ser informada')
 ];
 
-
+/*
 export const alunoMarcarAulaValidation = [
   check('professor')
     .exists()
@@ -163,4 +164,7 @@ export const alunoMarcarAulaValidation = [
     check('materia')
     .exists()
     .withMessage('A materia deve ser informada')
+
 ];
+
+*/

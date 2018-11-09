@@ -19,7 +19,7 @@ const professorSchema = new mongoose.Schema({
   materias: { type: [materiaSchema], required: true },
   avaliacoes: { type: [avaliacaoProfessorSchema], required: false },
   aulas: { type: [aulaSchema], required: false },
-  camposInvalidos: {type: [String]},
+  camposInvalidos: { type: [String] },
   localAula: {
     type: String,
     enum: ['residenciaAluno', 'residenciaProfessor', 'combinar'],
