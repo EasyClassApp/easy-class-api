@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b49ababd-28b5-4b4d-8b38-40729c62431b",
+		"_postman_id": "8f63800d-2e1f-4978-9a53-0274fe85588c",
 		"name": "Easy Class",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -106,7 +106,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"description\": \"This is some other task\",\n  \"owner\": \"Rafael\",\n  \"dueDate\": \"11/25/2018\",\n  \"completed\": false\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{base-url}}/user/5b75a0f97cd87f26e4ad40c3",
@@ -212,7 +212,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"description\": \"This is some other task\",\n  \"owner\": \"Rafael\",\n  \"dueDate\": \"11/25/2018\",\n  \"completed\": false\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{base-url}}/class/5b75a0f97cd87f26e4ad40c3",
@@ -274,7 +274,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nome\": \"Silveirinha da silveira\",\n\t\"email\": \"silveirinha@pucris.br\",\n\t\"senha\": \"99882\",\n\t\"endereco\": \"Rua Não sei aonde 98\",\n\t\"lattes\": \"Lattes do tio\",\n\t\"diploma\": \"Diploma do tio\",\n\t\"biografia\":\"Eu sou o Chefe Silveira\",\n\t\"dataNascimento\": \"01/01/1993\",\n\t\"materias\":[],\n\t\"camposInvalidos\":[],\n\t\"localAula\": \"combinar\"\n}"
+							"raw": "{\n\t\"nome\": \"Silveirinha da silveira\",\n\t\"email\": \"silveira@pucris.br\",\n\t\"senha\": \"99882\",\n\t\"endereco\": \"Rua Não sei aonde 98\",\n\t\"lattes\": \"Lattes do tio\",\n\t\"diploma\": \"Diploma do tio\",\n\t\"biografia\":\"Eu sou o Chefe Silveira\",\n\t\"dataNascimento\": \"01/01/1993\",\n\t\"materias\":[\n\t\t{\n\t\t\t\"nome\": \"matematica\", \n\t\t\t\"grau\": 10, \n\t\t\t\"especializacoes\": []\n\t\t}\n\t],\n\t\"camposInvalidos\":[],\n\t\"localAula\": \"combinar\"\n}"
 						},
 						"url": {
 							"raw": "{{base-url}}/professor/signup",
@@ -336,7 +336,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"silveirinha@pucris.br\",\n    \"revisado\": true,\n    \"camposInvalidos\":[\"senha\"]\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{base-url}}/professor/agenda/5ba57d58c0695a4308c95393",
@@ -347,6 +347,37 @@
 								"professor",
 								"agenda",
 								"5ba57d58c0695a4308c95393"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "professor/{materia-nome}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base-url}}/professor/matematica",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"professor",
+								"matematica"
 							]
 						}
 					},

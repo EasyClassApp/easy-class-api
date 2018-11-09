@@ -30,6 +30,7 @@ router.delete('/user/:userId', userController.deleteUser);
 // professor
 router.post('/professor/signup', authValidation.signupProfessorValidation, authController.signupProfessor);
 router.get('/professor', professorController.getProfessores);
+router.get('/professor/:materia', professorController.getProfessoresByMateria);
 router.get('/professor/:id', professorController.getProfessor);
 router.get('/professor/agenda/:id', professorController.getAgendaProfessor);
 router.put('/professor/agenda/:id', professorController.putHorariosProfessor);
