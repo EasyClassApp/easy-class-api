@@ -94,7 +94,6 @@ export async function getAgendaProfessor(req, res) {
 
 export async function putHorariosProfessor(req, res) {
   try {
-    console.log(req.body.agenda);
     Professor.update(
       {
         _id: req.params.id

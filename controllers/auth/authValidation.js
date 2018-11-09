@@ -94,6 +94,21 @@ export const signupProfessorValidation = [
     .withMessage('Pelo menos uma materia deve ser informada'),
 ];
 
+export const signinProfessorValidation = [
+  check('email')
+    .exists()
+    .isLength({ min: 1 })
+    .withMessage('O email deve ser informado')
+
+    .isEmail()
+    .withMessage('O email informado é inválido'),
+
+  check('password')
+    .exists()
+    .isLength({ min: 1 })
+    .withMessage('A senha deve ser informada')
+];
+
 export const signupAlunoValidation = [
   check('nome')
     .exists()
@@ -137,4 +152,19 @@ export const signupAlunoValidation = [
     check('dataNascimento')
     .exists()
     .withMessage('A data de nascimento deve ser informada')
+];
+
+export const signinAlunoValidation = [
+  check('email')
+    .exists()
+    .isLength({ min: 1 })
+    .withMessage('O email deve ser informado')
+
+    .isEmail()
+    .withMessage('O email informado é inválido'),
+
+  check('password')
+    .exists()
+    .isLength({ min: 1 })
+    .withMessage('A senha deve ser informada')
 ];
