@@ -19,7 +19,7 @@ const professorSchema = new mongoose.Schema({
   materias: { type: [materiaSchema], required: true },
   avaliacoes: { type: [avaliacaoProfessorSchema], required: false },
   aulas: { type: [aulaSchema], required: false },
-  camposInvalidos: {type: [String]},
+  camposInvalidos: { type: [String] },
   localAula: {
     type: String,
     enum: ['residenciaAluno', 'residenciaProfessor', 'combinar'],
@@ -31,7 +31,7 @@ const professorSchema = new mongoose.Schema({
 professorSchema.pre('save', function save(next) {
   const professor = this;
 
-  if (!professor.isModified('password')) {
+  if (!professor.isModified('senha')) {
     return next();
   }
 
@@ -40,12 +40,12 @@ professorSchema.pre('save', function save(next) {
       return next(err);
     }
 
-    return bcrypt.hash(professor.password, salt, null, (bcryptErr, hash) => {
+    return bcrypt.hash(professor.senha, salt, null, (bcryptErr, hash) => {
       if (err) {
         return next(bcryptErr);
       }
 
-      professor.password = hash;
+      professor.senha = hash;
       return next();
     });
   });
@@ -53,10 +53,10 @@ professorSchema.pre('save', function save(next) {
 
 // validates user's password.
 professorSchema.methods.comparePassword = function comparePassword(candidatePassword) {
-  const { password } = this;
+  const { senha } = this;
 
   return new Promise((resolve, reject) => {
-    bcrypt.compare(candidatePassword, password, (err, isMatch) => {
+    bcrypt.compare(candidatePassword, senha, (err, isMatch) => {
       if (err) {
         reject(err);
       }

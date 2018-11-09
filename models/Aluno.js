@@ -22,7 +22,7 @@ const alunoSchema = new mongoose.Schema({
 alunoSchema.pre('save', function save(next) {
   const aluno = this;
 
-  if (!aluno.isModified('password')) {
+  if (!aluno.isModified('senha')) {
     return next();
   }
 
@@ -31,12 +31,12 @@ alunoSchema.pre('save', function save(next) {
       return next(err);
     }
 
-    return bcrypt.hash(aluno.password, salt, null, (bcryptErr, hash) => {
+    return bcrypt.hash(aluno.senha, salt, null, (bcryptErr, hash) => {
       if (err) {
         return next(bcryptErr);
       }
 
-      aluno.password = hash;
+      aluno.senha = hash;
       return next();
     });
   });
@@ -44,10 +44,10 @@ alunoSchema.pre('save', function save(next) {
 
 // validates user's password.
 alunoSchema.methods.comparePassword = function comparePassword(candidatePassword) {
-  const { password } = this;
+  const { senha } = this;
 
   return new Promise((resolve, reject) => {
-    bcrypt.compare(candidatePassword, password, (err, isMatch) => {
+    bcrypt.compare(candidatePassword, senha, (err, isMatch) => {
       if (err) {
         reject(err);
       }

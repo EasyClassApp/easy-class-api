@@ -47,13 +47,8 @@ passport.use('professor', new LocalStrategy(
         return done(null, false, generateErrorMessage('email', 'O email informado está incorreto'));
       }
 
-      /*
-        TO DO: senhas de professor não estão criptografadas,
-        deve ser arrumado o signup e ressetar o banco para depois descomentar a linha abaixo
-        */
-      // const isMatch = await professor.comparePassword(password);
-
-      if (professor.senha !== password) {
+      const isMatch = await professor.comparePassword(password);
+      if (!isMatch) {
         return done(null, false, generateErrorMessage('password', 'A senha informada está incorreta'));
       }
 
@@ -75,12 +70,8 @@ passport.use('aluno', new LocalStrategy(
         return done(null, false, generateErrorMessage('email', 'O email informado está incorreto'));
       }
 
-      /*
-        TO DO: senhas de professor não estão criptografadas,
-        deve ser arrumado o signup e ressetar o banco para depois descomentar a linha abaixo
-        */
-      // const isMatch = await aluno.comparePassword(password);
-      if (aluno.senha !== password) {
+      const isMatch = await aluno.comparePassword(password);
+      if (!isMatch) {
         return done(null, false, generateErrorMessage('password', 'A senha informada está incorreta'));
       }
 
