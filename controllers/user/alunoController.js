@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import httpStatus from 'http-status';
 import Aluno from '../../models/Aluno';
 
@@ -13,7 +14,7 @@ export async function getAlunos(req, res) {
   }
 
   export async function createAluno(req, res) {
-    try {    
+    try {
       var aluno = new Aluno();
       aluno.set(req.body);
       await aluno.save();
@@ -24,4 +25,3 @@ export async function getAlunos(req, res) {
         .json({ error: 'Ocorreu um erro ao tentar cadastrar aluno' });
     }
   }
-  

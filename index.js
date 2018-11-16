@@ -27,7 +27,14 @@ router.get('/user/:userId', userController.getUserById);
 router.put('/user/:userId', userController.updateUser);
 router.delete('/user/:userId', userController.deleteUser);
 
-// professor
+// ALUNO
+router.get('/aluno', alunoController.getAlunos);
+router.post('/aluno', alunoController.createAluno);
+
+// ALUNO MARCAR AULA
+router.post('/aluno/marcaraula', classController.createAula);
+
+// PROFESSOR
 router.post('/professor/signup', authValidation.signupProfessorValidation, authController.signupProfessor);
 router.post('/professor/signin', authValidation.signinProfessorValidation, authController.signinProfessor);
 router.get('/professor', professorController.getProfessores);
