@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
+import { especialidadeSchema } from './Especialidade';
+
 
 export const materiaSchema = new mongoose.Schema({
-  grau: { type: Number, required: true },
-  nome: { type: String, required: true },
-  especializacoes: { type: [String], required: false },
+ nome: { type: String, required: true },
+ especialidades: { type: [especialidadeSchema], required: false },
 });
 
 const Materia = mongoose.model('Materia', materiaSchema);
