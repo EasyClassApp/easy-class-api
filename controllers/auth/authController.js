@@ -141,7 +141,7 @@ export async function signin(req, res, next) {
       .json({ errors: errors.mapped() });
   }
 
-  return passport.authenticate('local', (err, user, info) => {
+  return passport.authenticate('admin', (err, user, info) => {
     if (err) {
       return res
         .status(httpStatus.INTERNAL_SERVER_ERROR);
@@ -159,3 +159,58 @@ export async function signin(req, res, next) {
     });
   })(req, res, next);
 }
+
+export async function signinProfessor(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res
+      .status(httpStatus.UNPROCESSABLE_ENTITY)
+      .json({ errors: errors.mapped() });
+  }
+
+  return passport.authenticate('professor', (err, user, info) => {
+    if (err) {
+      return res
+        .status(httpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    if (!user) {
+      return res
+        .status(httpStatus.UNAUTHORIZED)
+        .json(info);
+    }
+
+    return res.json({
+      user,
+      token: generateJWT(user),
+    });
+  })(req, res, next);
+}
+
+export async function signinAluno(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res
+      .status(httpStatus.UNPROCESSABLE_ENTITY)
+      .json({ errors: errors.mapped() });
+  }
+
+  return passport.authenticate('aluno', (err, user, info) => {
+    if (err) {
+      return res
+        .status(httpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    if (!user) {
+      return res
+        .status(httpStatus.UNAUTHORIZED)
+        .json(info);
+    }
+
+    return res.json({
+      user,
+      token: generateJWT(user),
+    });
+  })(req, res, next);
+}
+

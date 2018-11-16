@@ -14,10 +14,10 @@ API REST do projeto Easy Class.
 # npm install
 ````
 
-3. Execute o script para inicializar o servidor em modo desenvolvimento:
+3. Execute o script para inicializar o servidor:
 
 ````
-# npm run start-dev
+# npm run start
 ````
 
 4. Para executar os testes:
@@ -26,6 +26,20 @@ API REST do projeto Easy Class.
 # npm run test
 ````
 
-## Consumindo a API com Postman
+## Como rodar a aplicação com Docker
 
-Dentro da pasta *infrastructure/postman* estão as definições de coleções e environment que podem ser importados na ferramenta Postman para testar os endpoints desta API.
+**Pré-requisitos: Docker, (no Windows, habilitar Hyper-V)** 
+
+Cria imagem e executa container para desenvolvimento:
+
+````
+  # docker-compose up app
+````
+
+A aplicação em modo de desenvolvimento ficará disponível em **localhost:3000**
+
+Para executar os testes:
+
+````
+  # docker-compose run test
+````

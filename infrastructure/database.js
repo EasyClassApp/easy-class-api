@@ -8,7 +8,7 @@ const connectionString = {
     databaseUri: process.env.DB_URI,
   },
   test: {
-    databaseUri: 'mongodb://localhost/easyclass-test',
+    databaseUri: process.env.DB_URI_TEST,
   },
 };
 
