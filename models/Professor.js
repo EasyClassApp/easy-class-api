@@ -8,7 +8,7 @@ const professorSchema = new mongoose.Schema({
   nome: { type: String, required: true },
   email: { type: String, required: true },
   senha: { type: String, required: true },
-  endereco: { type: String, required: true },
+  endereco: { type: String, required: false },
   revisado: { type: Boolean, required: true },
   lattes: { type: String, required: true },
   diploma: { type: String, required: false },
@@ -20,11 +20,7 @@ const professorSchema = new mongoose.Schema({
   avaliacoes: { type: [avaliacaoProfessorSchema], required: false },
   aulas: { type: [aulaSchema], required: false },
   camposInvalidos: { type: [String] },
-  localAula: {
-    type: String,
-    enum: ['residenciaAluno', 'residenciaProfessor', 'combinar'],
-    default: 'combinar',
-  },
+  localAula: { type: String, required: true },
 });
 
 // password hash middleware
