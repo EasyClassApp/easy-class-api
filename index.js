@@ -7,7 +7,7 @@ import * as userController from './controllers/user/userController';
 import * as alunoController from './controllers/user/alunoController';
 import * as professorController from './controllers/user/professorController';
 import * as classController from './controllers/class/classController';
-import * as materiaController from './controllers/materia/materiaController';
+import getMaterias from './controllers/materia/materiaController';
 
 // create and configure Express server
 const app = express();
@@ -59,7 +59,7 @@ router.put('/class/:id', classController.updateClass);
 router.delete('/class/:id', classController.removeClass);
 
 // materias
-router.get('/materias', materiaController.getMaterias);
+router.get('/materias', getMaterias);
 
 app.use('/api', router);
 export default app;

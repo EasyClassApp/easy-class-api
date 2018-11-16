@@ -1,7 +1,7 @@
 import httpStatus from 'http-status';
 import Materia from '../../models/Materia';
 
-export async function getMaterias(req, res) {
+export default async function getMaterias(req, res) {
   try {
     const materias = await Materia.find();
     return res.send(materias);
