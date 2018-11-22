@@ -7,7 +7,8 @@
     "test": "cross-env NODE_ENV=test jest",
     "start": "nodemon -L server.js --exec babel-node",
     "build": "rimraf build/ && babel ./ --out-dir build/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,./scripts --copy-files --source-maps --include-dotfiles",
-    "start-build": "node build/server.js"
+    "start-build": "node build/server.js",
+    "swagger": "apidoc-swagger -i controllers/ -o doc/"
   },
   "author": "Rafael Companhoni",
   "license": "ISC",
@@ -28,9 +29,11 @@
     "nodemon": "^1.17.5",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "swagger-ui-express": "^4.0.1"
   },
   "devDependencies": {
+    "apidoc-swagger": "^0.3.0",
     "babel-jest": "^23.0.1",
     "cross-env": "^5.1.6",
     "eslint": "^4.19.1",

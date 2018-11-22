@@ -43,3 +43,21 @@ Para executar os testes:
 ````
   # docker-compose run test
 ````
+
+
+## Como documentar a API
+
+A aplicação é documentada através do plugin apidoc-swagger,
+para novos códigos de documentação é possível seguir de exemplo o conteúdo do site abaixo:
+
+````
+http://apidocjs.com/
+````
+
+Para geração da documentação atualizada da api deve ser executado o comando abaixo:
+
+````
+  # npm run swagger
+````
+
+
