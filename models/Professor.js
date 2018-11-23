@@ -16,11 +16,11 @@ const professorSchema = new mongoose.Schema({
   notaMedia: { type: Number, required: false },
   dataNascimento: { type: Date, required: true },
   agenda: { type: [Date], required: false },
-  materias: { type: [materiaSchema], required: false },
+  materias: { type: [materiaSchema], required: true },
   avaliacoes: { type: [avaliacaoProfessorSchema], required: false },
   aulas: { type: [aulaSchema], required: false },
   camposInvalidos: { type: [String] },
-  localAula: { type: String, required: true },
+  localAula: { type: [String], required: true },
 });
 
 // password hash middleware

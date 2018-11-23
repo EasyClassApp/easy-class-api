@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8f63800d-2e1f-4978-9a53-0274fe85588c",
+		"_postman_id": "38b4d833-f2ce-4910-a3a1-dd12fc7688c8",
 		"name": "Easy Class",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -274,7 +274,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nome\": \"Silveirinha da silveira\",\n\t\"email\": \"silveira@pucris.br\",\n\t\"senha\": \"99882\",\n\t\"endereco\": \"Rua Não sei aonde 98\",\n\t\"lattes\": \"Lattes do tio\",\n\t\"diploma\": \"Diploma do tio\",\n\t\"biografia\":\"Eu sou o Chefe Silveira\",\n\t\"dataNascimento\": \"01/01/1993\",\n\t\"materias\":[\n\t\t{\n\t\t\t\"nome\": \"matematica\", \n\t\t\t\"grau\": 10, \n\t\t\t\"especializacoes\": []\n\t\t}\n\t],\n\t\"camposInvalidos\":[],\n\t\"localAula\": \"combinar\"\n}"
+							"raw": "{\n  \"nome\": \"Silveirinha da silveira\",\n  \"email\": \"qwieuy@pucris.br\",\n  \"senha\": \"99882\",\n  \"endereco\": \"Rua Não sei aonde 98\",\n  \"lattes\": \"Lattes do tio\",\n  \"diploma\": \"Diploma do tio\",\n  \"biografia\": \"Eu sou o Chefe Silveira\",\n  \"dataNascimento\": \"01/01/1993\",\n  \"materias\": [\n    {\n      \"nome\": \"História\",\n      \"id\": \"2\",\n      \"especialidades\": [\n        {\n          \"nome\": \"História da América\",\n          \"id\": \"20\"\n        },\n        {\n          \"nome\": \"História do Brasil\",\n          \"id\": \"21\"\n        },\n        {\n          \"nome\": \"História Geral\",\n          \"id\": \"22\"\n        },\n        {\n          \"nome\": \"Pré História\",\n          \"id\": \"23\"\n        }\n      ]\n    }\n  ],\n  \"camposInvalidos\": [],\n  \"localAula\": [\"\", \"\"]\n}"
 						},
 						"url": {
 							"raw": "{{base-url}}/professor/signup",

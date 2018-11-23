@@ -56,7 +56,7 @@ export async function signupProfessor(req, res) {
       lattes: req.body.lattes,
       biografia: req.body.biografia,
       dataNascimento: req.body.dataNascimento,
-      materias: req.body.materias,
+      materias: req.body.materias || [],
 
     });
 
@@ -64,6 +64,7 @@ export async function signupProfessor(req, res) {
     const token = generateJWT(newProfessor);
     return res.json({ newProfessor, token });
   } catch (error) {
+    console.log(error)
     return res
       .status(httpStatus.INTERNAL_SERVER_ERROR)
       .json({ error: 'Ocorreu um erro ao criar o professor' });
