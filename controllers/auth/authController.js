@@ -131,8 +131,12 @@ export async function alunoMarcarAula(req, res) {
 
 
 
-
-// authenticates with LocalStrategy and returns user + JWT
+/**
+ * @api {get} /signin Request User information
+ * @apiName Login
+ * @apiGroup User
+ *
+ */
 export async function signin(req, res, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
