@@ -54,10 +54,13 @@ para novos códigos de documentação é possível seguir de exemplo o conteúdo
 http://apidocjs.com/
 ````
 
-Para geração da documentação atualizada da api deve ser executado o comando abaixo:
+Para geração da documentação atualizada da api deve ser executado o comando abaixo e abrir a url no navegador:
 
 ````
   # npm run swagger
 ````
 
+````
+  http://localhost:8081/api/swagger/
+````
 

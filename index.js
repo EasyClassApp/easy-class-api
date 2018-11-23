@@ -20,8 +20,8 @@ const authorize = passport.authenticate('jwt', { session: false });
 
 const router = express.Router();
 router.get('', (req, res) => res.send(`Easy Class API (${process.env.NODE_ENV}) 1`));
-router.use('/', swaggerUi.serve);
-router.get('/doc', swaggerUi.setup(swaggerDocument));
+router.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); 
+router.get('/swagger', router);
 
 // admin users
 router.post('/signup', authValidation.signupValidation, authController.signup);

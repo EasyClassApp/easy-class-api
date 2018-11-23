@@ -1,16 +1,1 @@
-{
-  "swagger": "2.0",
-  "info": { "version": "1.0.0", "description": "Easy Class Server" },
-  "paths": {
-    "/signin": {
-      "get": {
-        "tags": ["User"],
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
-        "parameters": [],
-        "responses": {}
-      }
-    }
-  },
-  "definitions": {}
-}
+{"swagger":"2.0","info":{"version":"1.0.0","description":"Easy Class Server"},"paths":{"/signin":{"get":{"tags":["User"],"consumes":["application/json"],"produces":["application/json"],"parameters":[],"responses":{}}}},"definitions":{}}
