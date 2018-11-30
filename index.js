@@ -20,7 +20,7 @@ const authorize = passport.authenticate('jwt', { session: false });
 
 const router = express.Router();
 router.get('', (req, res) => res.send(`Easy Class API (${process.env.NODE_ENV}) 1`));
-router.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); 
+router.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 router.get('/swagger', router);
 
 // admin users
@@ -42,8 +42,8 @@ router.post('/aluno/marcaraula', classController.createAula);
 router.post('/professor/signup', authValidation.signupProfessorValidation, authController.signupProfessor);
 router.post('/professor/signin', authValidation.signinProfessorValidation, authController.signinProfessor);
 router.get('/professor', professorController.getProfessores);
-router.get('/professor/:materia', professorController.getProfessoresByMateria);
 router.get('/professor/:id', professorController.getProfessor);
+router.get('/professor/:materia', professorController.getProfessoresByMateria);
 router.get('/professor/agenda/:id', professorController.getAgendaProfessor);
 router.put('/professor/agenda/:id', professorController.putHorariosProfessor);
 router.get('/professor', professorController.getProfessores);
