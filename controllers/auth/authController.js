@@ -1,3 +1,4 @@
+/* eslint-disable */
 import httpStatus from 'http-status';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
@@ -86,8 +87,8 @@ export async function signupAluno(req, res) {
       responsavel: req.body.responsavel,
       numeroDependentes: req.body.numeroDependentes,
       dataNascimento: req.body.dataNascimento,
+      materiaDificuldade: req.body.materiaDificuldade,
     });
-
     const newAluno = await aluno.save();
     const token = generateJWT(newAluno);
     return res.json({ newAluno, token });
@@ -98,6 +99,39 @@ export async function signupAluno(req, res) {
   }
 }
 
+
+export async function alunoMarcarAula(req, res) {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res
+        .status(httpStatus.UNPROCESSABLE_ENTITY)
+        .json({ errors: errors.mapped() });
+    }
+
+    const aula = new Aula({
+      professor: req.body.professor,
+      aluno: req.body.aluno,
+      horario: req.body.horario,
+      local: req.body.local,
+      responsavel: req.body.responsavel,
+      status: req.body.status,
+      materia: req.body.materia,
+
+    });
+    const newAula = await aula.save();
+    const token = generateJWT(newAula);
+    return res.json({ newAula, token });
+  } catch (error) {
+    return res
+      .status(httpStatus.INTERNAL_SERVER_ERROR)
+      .json({ error: 'Ocorreu um erro ao agendar aula' });
+  }
+}
+
+
+
+
 // authenticates with LocalStrategy and returns user + JWT
 export async function signin(req, res, next) {
   const errors = validationResult(req);
@@ -107,7 +141,7 @@ export async function signin(req, res, next) {
       .json({ errors: errors.mapped() });
   }
 
-  return passport.authenticate('local', (err, user, info) => {
+  return passport.authenticate('admin', (err, user, info) => {
     if (err) {
       return res
         .status(httpStatus.INTERNAL_SERVER_ERROR);
@@ -125,3 +159,58 @@ export async function signin(req, res, next) {
     });
   })(req, res, next);
 }
+
+export async function signinProfessor(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res
+      .status(httpStatus.UNPROCESSABLE_ENTITY)
+      .json({ errors: errors.mapped() });
+  }
+
+  return passport.authenticate('professor', (err, user, info) => {
+    if (err) {
+      return res
+        .status(httpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    if (!user) {
+      return res
+        .status(httpStatus.UNAUTHORIZED)
+        .json(info);
+    }
+
+    return res.json({
+      user,
+      token: generateJWT(user),
+    });
+  })(req, res, next);
+}
+
+export async function signinAluno(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res
+      .status(httpStatus.UNPROCESSABLE_ENTITY)
+      .json({ errors: errors.mapped() });
+  }
+
+  return passport.authenticate('aluno', (err, user, info) => {
+    if (err) {
+      return res
+        .status(httpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    if (!user) {
+      return res
+        .status(httpStatus.UNAUTHORIZED)
+        .json(info);
+    }
+
+    return res.json({
+      user,
+      token: generateJWT(user),
+    });
+  })(req, res, next);
+}
+

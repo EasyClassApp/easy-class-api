@@ -8,7 +8,7 @@ const professorSchema = new mongoose.Schema({
   nome: { type: String, required: true },
   email: { type: String, required: true },
   senha: { type: String, required: true },
-  endereco: { type: String, required: true },
+  endereco: { type: String, required: false },
   revisado: { type: Boolean, required: true },
   lattes: { type: String, required: true },
   diploma: { type: String, required: false },
@@ -19,19 +19,15 @@ const professorSchema = new mongoose.Schema({
   materias: { type: [materiaSchema], required: true },
   avaliacoes: { type: [avaliacaoProfessorSchema], required: false },
   aulas: { type: [aulaSchema], required: false },
-  camposInvalidos: {type: [String]},
-  localAula: {
-    type: String,
-    enum: ['residenciaAluno', 'residenciaProfessor', 'combinar'],
-    default: 'combinar',
-  },
+  camposInvalidos: { type: [String] },
+  localAula: { type: String, required: true },
 });
 
 // password hash middleware
 professorSchema.pre('save', function save(next) {
   const professor = this;
 
-  if (!professor.isModified('password')) {
+  if (!professor.isModified('senha')) {
     return next();
   }
 
@@ -40,12 +36,12 @@ professorSchema.pre('save', function save(next) {
       return next(err);
     }
 
-    return bcrypt.hash(professor.password, salt, null, (bcryptErr, hash) => {
+    return bcrypt.hash(professor.senha, salt, null, (bcryptErr, hash) => {
       if (err) {
         return next(bcryptErr);
       }
 
-      professor.password = hash;
+      professor.senha = hash;
       return next();
     });
   });
@@ -53,10 +49,10 @@ professorSchema.pre('save', function save(next) {
 
 // validates user's password.
 professorSchema.methods.comparePassword = function comparePassword(candidatePassword) {
-  const { password } = this;
+  const { senha } = this;
 
   return new Promise((resolve, reject) => {
-    bcrypt.compare(candidatePassword, password, (err, isMatch) => {
+    bcrypt.compare(candidatePassword, senha, (err, isMatch) => {
       if (err) {
         reject(err);
       }

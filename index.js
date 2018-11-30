@@ -7,7 +7,7 @@ import * as userController from './controllers/user/userController';
 import * as alunoController from './controllers/user/alunoController';
 import * as professorController from './controllers/user/professorController';
 import * as classController from './controllers/class/classController';
-import * as materiaController from './controllers/materia/materiaController';
+import getMaterias from './controllers/materia/materiaController';
 
 // create and configure Express server
 const app = express();
@@ -27,25 +27,39 @@ router.get('/user/:userId', userController.getUserById);
 router.put('/user/:userId', userController.updateUser);
 router.delete('/user/:userId', userController.deleteUser);
 
-// professor
+// ALUNO
+router.get('/aluno', alunoController.getAlunos);
+router.post('/aluno', alunoController.createAluno);
+
+// ALUNO MARCAR AULA
+router.post('/aluno/marcaraula', classController.createAula);
+
+// PROFESSOR
 router.post('/professor/signup', authValidation.signupProfessorValidation, authController.signupProfessor);
+router.post('/professor/signin', authValidation.signinProfessorValidation, authController.signinProfessor);
 router.get('/professor', professorController.getProfessores);
+router.get('/professor/:materia', professorController.getProfessoresByMateria);
 router.get('/professor/:id', professorController.getProfessor);
-router.get('/professor/:id/agenda', professorController.getAgendaProfessor);
+router.get('/professor/agenda/:id', professorController.getAgendaProfessor);
+router.put('/professor/agenda/:id', professorController.putHorariosProfessor);
+router.get('/professor', professorController.getProfessores);
 router.post('/professor', professorController.createProfessor);
-router.post('/professor/validate', professorController.validateProfessor);
+router.put('/professor/validate', professorController.validateProfessor);
 
 // aluno
 router.post('/aluno/signup', authValidation.signupAlunoValidation, authController.signupAluno);
+router.post('/aluno/signin', authValidation.signinAlunoValidation, authController.signinAluno);
 router.get('/aluno', alunoController.getAlunos);
 router.post('/aluno', alunoController.createAluno);
 
 // class
 router.get('/class', classController.getClasses);
 router.get('/class/:classId', authorize, classController.getClassById);
+router.put('/class/:id', classController.updateClass);
+router.delete('/class/:id', classController.removeClass);
 
 // materias
-router.get('/materias', materiaController.getMaterias);
+router.get('/materias', getMaterias);
 
 app.use('/api', router);
 export default app;

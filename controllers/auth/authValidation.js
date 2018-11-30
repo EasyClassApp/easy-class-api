@@ -3,6 +3,7 @@ import { check } from 'express-validator/check';
 import User from '../../models/User';
 import Professor from '../../models/Professor';
 import Aluno from '../../models/Aluno';
+import Aula from '../../models/Aula';
 
 export const signupValidation = [
   check('name')
@@ -94,6 +95,21 @@ export const signupProfessorValidation = [
     .withMessage('Pelo menos uma materia deve ser informada'),
 ];
 
+export const signinProfessorValidation = [
+  check('email')
+    .exists()
+    .isLength({ min: 1 })
+    .withMessage('O email deve ser informado')
+
+    .isEmail()
+    .withMessage('O email informado é inválido'),
+
+  check('password')
+    .exists()
+    .isLength({ min: 1 })
+    .withMessage('A senha deve ser informada')
+];
+
 export const signupAlunoValidation = [
   check('nome')
     .exists()
@@ -107,7 +123,7 @@ export const signupAlunoValidation = [
     .withMessage('O email deve ser informado')
 
     .isEmail()
-    .withMessage('O email informado é inválido')
+    .withMessage('O email informado é inválid o')
 
     .custom(async (email, { req }) => {
       const professores = await Professor.find({ email });
@@ -133,8 +149,23 @@ export const signupAlunoValidation = [
     check('numeroDependentes')
     .exists()
     .withMessage('O numeroDependentes deve ser informada'),
-
     check('dataNascimento')
     .exists()
     .withMessage('A data de nascimento deve ser informada')
 ];
+
+export const signinAlunoValidation = [
+  check('email')
+    .exists()
+    .isLength({ min: 1 })
+    .withMessage('O email deve ser informado')
+
+    .isEmail()
+    .withMessage('O email informado é inválido'),
+
+  check('password')
+    .exists()
+    .isLength({ min: 1 })
+    .withMessage('A senha deve ser informada')
+];
+
