@@ -20,7 +20,7 @@ const professorSchema = new mongoose.Schema({
   avaliacoes: { type: [avaliacaoProfessorSchema], required: false },
   aulas: { type: [aulaSchema], required: false },
   camposInvalidos: { type: [String] },
-  localAula: { type: String, required: true },
+  localAula: { type: [String], required: true },
 });
 
 // password hash middleware

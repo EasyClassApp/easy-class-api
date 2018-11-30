@@ -1,5 +1,6 @@
 import express from 'express';
 import passport from 'passport';
+import swaggerUi from 'swagger-ui-express';
 import configuration from './infrastructure/configuration';
 import * as authController from './controllers/auth/authController';
 import * as authValidation from './controllers/auth/authValidation';
@@ -8,6 +9,7 @@ import * as alunoController from './controllers/user/alunoController';
 import * as professorController from './controllers/user/professorController';
 import * as classController from './controllers/class/classController';
 import getMaterias from './controllers/materia/materiaController';
+import swaggerDocument from './doc/swagger.json';
 
 // create and configure Express server
 const app = express();
@@ -18,6 +20,8 @@ const authorize = passport.authenticate('jwt', { session: false });
 
 const router = express.Router();
 router.get('', (req, res) => res.send(`Easy Class API (${process.env.NODE_ENV}) 1`));
+router.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); 
+router.get('/swagger', router);
 
 // admin users
 router.post('/signup', authValidation.signupValidation, authController.signup);
